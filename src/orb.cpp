@@ -16,10 +16,14 @@ void orbFeature::detectFeatures(FRAME& frame) {
 
 vector<cv::DMatch> orbFeature::matchFeatures(FRAME& f1, FRAME& f2) {
     vector<cv::DMatch> matches;
-    this->matcher.match(f1.desp, f2.desp, matches);
-    //cout << "matches is " << matches.size() << endl;
     vector<cv::DMatch> goodMatches;
-    double good_match_threshold = 4;
+    if( f1.rgb.cols == f2.rgb.cols ) {
+        this->matcher.match(f1.desp, f2.desp, matches);
+    }
+    else
+        return goodMatches;
+    //cout << "matches is " << matches.size() << endl;
+    double good_match_threshold = 5;
     double minDis = 9999;
     for( auto i:matches) {
         // cannot let distance be 0! or you will end up with no good matches.
@@ -29,8 +33,7 @@ vector<cv::DMatch> orbFeature::matchFeatures(FRAME& f1, FRAME& f2) {
     // cout << "min Dis is " << minDis << endl;
     for( auto j:matches) {
         //cout << " distance :" << j.distance << endl;
-        // +5 is for a larger number.
-        if( j.distance < good_match_threshold * minDis + 5)
+        if( j.distance < good_match_threshold * minDis )
             goodMatches.push_back(j);
     }
     return goodMatches;
