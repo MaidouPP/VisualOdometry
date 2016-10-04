@@ -1,0 +1,38 @@
+start_index=1
+end_index=-1
+# 数据所在目录
+data_source=/home/shixin/visual_odometry/rgbd_dataset_f2/
+
+rgb_dir=rgb/
+rgb_extension=.png
+depth_dir=depth/
+depth_extension=.png
+
+# 相机内参
+# fr1
+#camera.cx=318.6
+#camera.cy=255.3
+#camera.fx=517.3
+#camera.fy=516.5
+
+# fr2
+camera.cx=325.1
+camera.cy=249.7
+camera.fx=520.9
+camera.fy=521.0
+
+# fr3
+#camera.cx=320.1
+#camera.cy=247.6
+#camera.fx=535.4
+#camera.fy=539.2
+
+camera.d0=0.2312
+camera.d1=-0.7849
+camera.d2=-0.0033
+camera.d3=-0.0001
+camera.d4=0.9172
+
+camera.scale=5000.0
+
+min_inliers=10
