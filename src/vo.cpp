@@ -6,7 +6,8 @@
 #include "vo.hpp"
 
 using namespace std;
-using namespace rgbd_vo;
+
+//using namespace rgbd_vo;
 
 /*
 void computeKeyPointsDesp( FRAME& frame, rgbd::DATA& imData, rgbd_vo::orbFeature& orb, int index, string srcAddress) {
@@ -44,6 +45,8 @@ int class_id; //用于聚类的id
  * *******************************************************
 */
 
+
+namespace rgbd_vo {
 // compute motion -> tvec & rvec stand for translation and rotation respectively
 
 PnP poseEstimate( FRAME& f1, FRAME& f2, CAMERA_INTRINSIC_PARAMETERS& camera, orbFeature& orb) {
@@ -93,4 +96,6 @@ PnP poseEstimate( FRAME& f1, FRAME& f2, CAMERA_INTRINSIC_PARAMETERS& camera, orb
     result.useful = true;
 
     return result;
+}
+
 }

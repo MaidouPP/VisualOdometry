@@ -27,7 +27,8 @@ int main() {
     for( unsigned short idx = 1; idx < imData.rgbs.size(); idx++) {
         rgbd_vo::FRAME currFrame(srcAddress+imData.rgbs[idx], srcAddress+imData.depths[idx]);
         orb.detectFeatures(currFrame);
-        rgbd_vo::PnP result = rgbd_vo::poseEstimate( lastFrame, currFrame, camera, orb );
+        rgbd_vo::PnP result;
+        result = rgbd_vo::poseEstimate( lastFrame, currFrame, camera, orb );
         if( !result.useful || result.inliers < min_inliers)
             continue;
 //        if( result.inliers < min_inliers )

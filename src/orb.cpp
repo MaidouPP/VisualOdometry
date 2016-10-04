@@ -26,7 +26,7 @@ vector<cv::DMatch> orbFeature::matchFeatures(FRAME& f1, FRAME& f2) {
         if( i.distance < minDis && i.distance != 0)
             minDis = i.distance;
     }
-    cout << "min Dis is " << minDis << endl;
+    // cout << "min Dis is " << minDis << endl;
     for( auto j:matches) {
         //cout << " distance :" << j.distance << endl;
         // +5 is for a larger number.
